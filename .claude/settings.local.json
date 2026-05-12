@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm search:*)",
+      "Bash(npm view:*)",
+      "Bash(npx shadcn@latest add @react-bits/dither-js-tw)"
+    ]
+  }
+}

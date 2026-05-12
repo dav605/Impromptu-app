@@ -1,9 +1,9 @@
-import { puter } from '@heyputer/puter.js';
-
 export class GeminiService {
   constructor() {}
 
   async analyzeSpeech(topic, transcript) {
+    const { puter } = await import('@heyputer/puter.js');
+
     const prompt = `
       You are an expert speech coach. Analyze the following impromptu speech transcript based on the assigned topic. Pay special attention to the speaker's tone and delivery.
       Provide the result STRICTLY as a valid JSON object with the exact schema below.
