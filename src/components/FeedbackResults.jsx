@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { CheckCircle2, AlertTriangle, TrendingUp, Clock, FileText } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, TrendingUp, Clock, FileText, Volume2 } from 'lucide-react';
 
 export function FeedbackResults({ results, hideScore = false }) {
   if (!results || !results.metrics) return null;
@@ -69,6 +69,16 @@ export function FeedbackResults({ results, hideScore = false }) {
           subtitle="ums, ahs, likes"
           color="border-amber-500/20 bg-amber-500/5"
         />
+      </div>
+
+      <div className="md:col-span-3 mt-2 bg-[#12141a] rounded-3xl p-6 border border-[#1f2229] shadow-lg flex items-center gap-4">
+        <div className="p-3 bg-indigo-500/10 rounded-2xl border border-indigo-500/20">
+          <Volume2 className="w-6 h-6 text-indigo-400" />
+        </div>
+        <div>
+          <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">Speaker Tone</h4>
+          <p className="text-xl font-semibold text-indigo-200">{metrics.tone || "Not analyzed"}</p>
+        </div>
       </div>
 
       <div className="md:col-span-3 grid md:grid-cols-2 gap-6 mt-2">

@@ -5,7 +5,7 @@ export class GeminiService {
 
   async analyzeSpeech(topic, transcript) {
     const prompt = `
-      You are an expert speech coach. Analyze the following impromptu speech transcript based on the assigned topic.
+      You are an expert speech coach. Analyze the following impromptu speech transcript based on the assigned topic. Pay special attention to the speaker's tone and delivery.
       Provide the result STRICTLY as a valid JSON object with the exact schema below.
       Do NOT include markdown formatting like \`\`\`json or \`\`\` around the output. Only return the raw JSON text.
 
@@ -13,7 +13,8 @@ export class GeminiService {
         "metrics": {
           "confidenceScore": 85,
           "wordsPerMinute": 130,
-          "fillerWordCount": 3
+          "fillerWordCount": 3,
+          "tone": "Confident and persuasive"
         },
         "feedback": {
           "strengths": ["Strong opening hook", "Clear articulation"],
