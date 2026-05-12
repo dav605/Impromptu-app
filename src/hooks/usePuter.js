@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { puter } from '@heyputer/puter.js';
+// import { puter } from '@heyputer/puter.js'; // Puter not needed
 
 export function usePuter() {
   const [aaiKey, setAaiKey] = useState(null);
@@ -9,12 +9,16 @@ export function usePuter() {
   useEffect(() => {
     async function initializePuter() {
       try {
+        // If Puter is not configured, we'll rely on the AssemblyAI key from .env
         if (!puter) {
-          throw new Error("Puter.js is not loaded.");
+          console.warn('Puter not configured; using AssemblyAI key from env only.');
         }
 
         // Try to get AssemblyAI API key from env, then KV store
-        let key = import.meta.env.VITE_ASSEMBLYAI_API_KEY || await puter.kv.get("ASSEMBLYAI_API_KEY");
+        let key = import.meta.env.VITE_ASSEMBLYAI_API_KEY;
+        if (!key && puter) {
+          key = await puter.kv.get("ASSEMBLYAI_API_KEY");
+        }
         
         if (!key) {
           // If not found, prompt the user
